@@ -1,7 +1,6 @@
 box:
   id: alpine
   tag: latest
-
 build:
   steps:
     - script:
