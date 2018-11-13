@@ -1,0 +1,21 @@
+box:
+  id: alpine
+  tag: latest
+
+build:
+  steps:
+    - script:
+        name: Generate version number
+        code: |
+          VERSION_NUMBER=$(date +%y%m%d_%H%M%S)_$WERCKER_GIT_COMMIT
+          echo "Writing image name $IMAGE_NAME to $WERCKER_CACHE_DIR/image-name"
+          echo "$VERSION_NUMBER" > $WERCKER_CACHE_DIR/version-number
+	  ls -al $WERCKER_CACHE_DIR
+
+test:
+  steps:
+    - script:
+        name: Read version number
+        code: |
+          if [ -f $WERCKER_CACHE_DIR/version-number ]; then echo "found $WERCKER_CACHE_DIR/version-number from previous pipeline"; VERSION_NUMBER=$(ca $WERCKER_CACHE_DIR/version-number); else echo "$WERCKER_CACHE_DIR/version-number does not exist"; ls -al $WERCKER_CACHE_DIR;
+
