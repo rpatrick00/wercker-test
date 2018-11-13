@@ -15,5 +15,6 @@ test:
     - script:
         name: Read version number
         code: |
-          if [ -f $WERCKER_CACHE_DIR/version-number ]; then echo "found $WERCKER_CACHE_DIR/version-number from previous pipeline"; VERSION_NUMBER=$(ca $WERCKER_CACHE_DIR/version-number); else echo "$WERCKER_CACHE_DIR/version-number does not exist"; ls -al $WERCKER_CACHE_DIR;
+          ls -al $WERCKER_CACHE_DIR/version-number
+
 
