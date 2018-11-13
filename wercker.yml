@@ -1,6 +1,6 @@
 box:
-  id: alpine
-  tag: latest
+  id: ubuntu
+
 build:
   steps:
     - script:
